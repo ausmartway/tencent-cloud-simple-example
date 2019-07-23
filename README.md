@@ -15,5 +15,8 @@
 
 5.terraform plan
 
-6.terraform apply     //如果看到internal error，可以用：terraform apply -parallelism=1 来避免系统API过忙造成的错误。
-7.terraform destroy   //如果看到internal error，可以用：terraform apply -parallelism=1 来避免系统API过忙造成的错误。
+6.terraform apply     
+//如果看到internal error，可以用：terraform apply -parallelism=1 来避免系统API过忙造成的错误。
+
+7.terraform destroy   
+//如果看到internal error，可以用：terraform apply -parallelism=1 来避免系统API过忙造成的错误。

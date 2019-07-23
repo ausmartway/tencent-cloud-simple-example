@@ -3,9 +3,9 @@
 
 使用方法：
 
-1.安装terraform。https://learn.hashicorp.com/terraform/getting-started/install.html
+1.[安装terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)。
 
-2.去腾讯云console生成一套云API Key，并设置环境变量。https://www.terraform.io/docs/providers/tencentcloud/index.html
+2.去腾讯云console生成一套云API Key，并设置环境变量。细节可以参考[这里](https://www.terraform.io/docs/providers/tencentcloud/index.html)
 
 3.git clone git@github.com:ausmartway/tencent-cloud-simple-example.git
 

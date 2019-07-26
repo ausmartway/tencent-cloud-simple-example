@@ -1,5 +1,5 @@
 resource "tencentcloud_instance" "nginx" {
-  instance_name = "nginx-service"
+  instance_name = "nginx-service${count.index}"
   availability_zone = "ap-guangzhou-3"
   image_id      = "img-pi0ii46r"
   instance_type = "S2.SMALL1"
@@ -12,7 +12,7 @@ resource "tencentcloud_instance" "nginx" {
 vpc_id    = "${tencentcloud_vpc.main.id}"
 subnet_id = "${tencentcloud_subnet.web.id}"
   internet_max_bandwidth_out = 10
-  count = 2
+  count = 4
 }
 
 resource "tencentcloud_instance" "mysql" {

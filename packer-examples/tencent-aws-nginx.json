@@ -1,0 +1,42 @@
+{
+  "variables": {
+    "tc_secret_id": "{{env `TENCENTCLOUD_ACCESS_KEY`}}",
+    "tc_secret_key": "{{env `TENCENTCLOUD_SECRET_KEY`}}",
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}"
+  },
+  "builders": [
+    {
+    "type": "tencentcloud-cvm",
+    "secret_id": "{{user `secret_id`}}",
+    "secret_key": "{{user `secret_key`}}",
+    "region": "ap-guangzhou",
+    "zone": "ap-guangzhou-3",
+    "instance_type": "S2.SMALL1",
+    "disk_type": "CLOUD_PREMIUM",
+    "associate_public_ip_address": true,
+    "source_image_id": "img-9qabwvbn",
+    "ssh_username" : "root",
+    "image_name": "nginx-service-v2"
+  },
+  {
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "source_ami": "ami-033d9e49dbfa14af5",
+    "region": "ap-southeast-2",
+    "instance_type": "t2.micro",
+    "ssh_username": "ec2-user",
+    "ami_name": "nginx-service-{{isotime \"2006-01-02\"}}"
+  }
+  ],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sudo rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm",
+      "sudo yum install -y nginx",
+      "sudo systemctl enable nginx",
+      "sudo systemctl start nginx"
+    ]
+  }]
+}

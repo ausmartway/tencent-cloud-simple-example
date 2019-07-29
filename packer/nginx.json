@@ -1,0 +1,30 @@
+{
+  "variables": {
+    "tc_secret_id": "{{env `TENCENTCLOUD_ACCESS_KEY`}}",
+    "tc_secret_key": "{{env `TENCENTCLOUD_SECRET_KEY`}}"
+  },
+  "builders": [
+    {
+    "type": "tencentcloud-cvm",
+    "secret_id": "{{user `tc_secret_id`}}",
+    "secret_key": "{{user `tc_secret_key`}}",
+    "region": "ap-guangzhou",
+    "zone": "ap-guangzhou-3",
+    "instance_type": "S2.SMALL1",
+    "disk_type": "CLOUD_PREMIUM",
+    "associate_public_ip_address": true,
+    "source_image_id": "img-9qabwvbn",
+    "ssh_username" : "root",
+    "image_name": "nginx-service-v1"
+  }
+  ],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm",
+      "yum install -y nginx",
+      "systemctl enable nginx",
+      "systemctl start nginx"
+    ]
+  }]
+}

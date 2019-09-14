@@ -12,7 +12,7 @@ resource "tencentcloud_instance" "nginx" {
 vpc_id    = "${tencentcloud_vpc.main.id}"
 subnet_id = "${tencentcloud_subnet.web.id}"
   internet_max_bandwidth_out = 10
-  count = 4
+  count = 2
 }
 
 resource "tencentcloud_instance" "mysql" {
@@ -29,7 +29,7 @@ resource "tencentcloud_instance" "mysql" {
 vpc_id    = "${tencentcloud_vpc.main.id}"
 subnet_id = "${tencentcloud_subnet.web.id}"
   internet_max_bandwidth_out = 10
-  count = 2
+  count = 1
 }
 
 

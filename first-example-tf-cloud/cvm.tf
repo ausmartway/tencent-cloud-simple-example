@@ -1,4 +1,4 @@
-resource "tencentcloud_instance" "nginx" {
+resource "tencentcloud_instance" "webservers" {
   instance_name = "nginx-service${count.index}"
   availability_zone = "ap-guangzhou-3"
   image_id      = "img-pi0ii46r"

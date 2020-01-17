@@ -15,7 +15,7 @@ subnet_id = "${tencentcloud_subnet.web.id}"
   count = 1
 }
 
-resource "tencentcloud_instance" "trading" {
+resource "tencentcloud_instance" "saicgm" {
   instance_name = "trading-service"
   availability_zone = "ap-guangzhou-3"
   image_id      = "img-pi0ii46r"
